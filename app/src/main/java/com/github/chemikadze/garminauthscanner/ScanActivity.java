@@ -2,15 +2,13 @@ package com.github.chemikadze.garminauthscanner;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Base64;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.garmin.android.connectiq.ConnectIQ;
 import com.garmin.android.connectiq.IQApp;
@@ -19,9 +17,6 @@ import com.garmin.android.connectiq.exception.InvalidStateException;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import org.apache.commons.codec.binary.Base32;
-
-import java.net.URL;
 import java.util.Collection;
 import java.util.Map;
 
