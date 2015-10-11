@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Garmin Authenticator Scanner</string>
+    <string name="sdk_init_failure">Failed to initialize ConnectIQ SDK</string>
+    <string name="sdk_get_devices_failure">Failed to get devices</string>
+    <string name="sdk_device_failure">Device connection error</string>
+    <string name="sdk_app_info_failure">Failed to get app info</string>
+    <string name="msg_no_device_connected">No device with Authenticator installed</string>
+    <string name="msg_install_app_first">Install app first</string>
+    <string name="msg_send_account_failure">Failed to send account %1$s to device %2$s</string>
+    <string name="msg_send_account_success">Account %1$s sent to device %2$s</string>
+    <string name="app_url">https://apps.garmin.com/en-US/apps/5fe00c1e-ccd4-45dc-8481-215fd4da10b7</string>
+    <string name="app_id">36392FDA5B0947AD8D87DCC752606234</string>
+    <string name="title_activity_scan">Scan</string>
+    <string name="action_scan_code">Scan code</string>
+    <string name="action_open_iq_store">ConnectIQ</string>
+    <string name="status_initializing">Initializing SDK</string>
+    <string name="status_initialized">SDK initialized</string>
+    <string name="status_searching">Searching device</string>
+    <string name="status_devices_found">Device found</string>
+    <string name="status_resolve_started">Getting application info</string>
+    <string name="status_resolved">Application found</string>
+    <string name="status_sending">Sending account info</string>
+    <string name="status_completed">Completed</string>
+    <string name="status_cancelled">Cancelled</string>
+
+</resources>
