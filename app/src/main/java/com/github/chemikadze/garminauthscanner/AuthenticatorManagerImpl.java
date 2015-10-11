@@ -123,7 +123,7 @@ class AuthenticatorManagerImpl implements
     }
 
     @Override
-    public void sendAccountToDevices(AuthAccount account, Map<IQDevice, IQApp> receivers) {
+    public void sendAccountToDevices(final AuthAccount account, Map<IQDevice, IQApp> receivers) {
         for (final Map.Entry<IQDevice, IQApp> entry : receivers.entrySet()) {
             Map<String, String> data = new HashMap<String, String>();
             final String name = account.getName();
@@ -135,8 +135,7 @@ class AuthenticatorManagerImpl implements
                     @Override
                     public void onMessageStatus(IQDevice iqDevice, IQApp iqApp, ConnectIQ.IQMessageStatus iqMessageStatus) {
                         if (iqMessageStatus == ConnectIQ.IQMessageStatus.SUCCESS) {
-                            String msg = context.getString(R.string.msg_send_account_success, name, entry.getKey().getFriendlyName());
-                            scanProcessCallback.onFailure(msg);
+                            scanProcessCallback.onSendFinished(iqDevice, account);
                         } else {
                             String msg = context.getString(R.string.msg_send_account_failure, name, entry.getKey().getFriendlyName());
                             scanProcessCallback.onFailure(msg);

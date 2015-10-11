@@ -26,7 +26,7 @@ public interface AuthenticatorManager {
 
         void onSendStarted();
 
-        void onSendFinished();
+        void onSendFinished(IQDevice device, AuthAccount account);
 
         void onFailure(String reason);
 

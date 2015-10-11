@@ -117,6 +117,8 @@ public class ScanActivity extends ActionBarActivity implements AuthenticatorMana
             IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
             if (result == null || resultCode != RESULT_OK || result.getContents().length() == 0) {
                 progress(70, getString(R.string.status_cancelled));
+                ProgressBar bar = (ProgressBar)findViewById(R.id.progress_bar);
+                bar.setVisibility(View.INVISIBLE);
             } else {
                 Uri uri = Uri.parse(result.getContents());
                 if (!uri.getScheme().equals("otpauth")) {
@@ -197,8 +199,11 @@ public class ScanActivity extends ActionBarActivity implements AuthenticatorMana
     }
 
     @Override
-    public void onSendFinished() {
-        progress(70, getString(R.string.status_completed));
+    public void onSendFinished(IQDevice device, AuthAccount account) {
+        String msg = getString(R.string.msg_send_account_success, account.getName(), device.getFriendlyName());
+        progress(70, msg);
+        TextView label = (TextView)findViewById(R.id.completion_comment);
+        label.setText(R.string.comment_check_watch);
     }
 
     @Override
@@ -211,8 +216,11 @@ public class ScanActivity extends ActionBarActivity implements AuthenticatorMana
 
     private void progress(int percent, String status) {
         ProgressBar bar = (ProgressBar)findViewById(R.id.progress_bar);
+        bar.setVisibility(View.VISIBLE);
         TextView label = (TextView)findViewById(R.id.progress_comment);
         bar.setProgress(percent);
         label.setText(status);
+        TextView completionLabel = (TextView)findViewById(R.id.completion_comment);
+        completionLabel.setText("");
     }
 }

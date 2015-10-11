@@ -12,7 +12,7 @@
     <string name="msg_send_account_success">Account %1$s sent to device %2$s</string>
     <string name="app_url">https://apps.garmin.com/en-US/apps/5fe00c1e-ccd4-45dc-8481-215fd4da10b7</string>
     <string name="app_id">36392FDA5B0947AD8D87DCC752606234</string>
-    <string name="title_activity_scan">Scan</string>
+    <string name="title_activity_scan">Scan to watch</string>
     <string name="action_scan_code">Scan code</string>
     <string name="action_open_iq_store">ConnectIQ</string>
     <string name="status_initializing">Initializing SDK</string>
@@ -24,5 +24,7 @@
     <string name="status_sending">Sending account info</string>
     <string name="status_completed">Completed</string>
     <string name="status_cancelled">Cancelled</string>
+
+    <string name="comment_check_watch">Now open widget on your watch, you will be asked to save new account.</string>
 
 </resources>

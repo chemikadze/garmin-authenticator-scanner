@@ -16,10 +16,11 @@
 
     <TextView
         android:id="@+id/progress_comment"
-        android:text="test"
-        android:layout_width="wrap_content"
+        android:text=""
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textSize="10pt"/>
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -27,6 +28,12 @@
         android:layout_height="wrap_content"
         android:max="70"
         style="@android:style/Widget.Holo.Light.ProgressBar.Horizontal"/>
+
+    <TextView
+        android:id="@+id/completion_comment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text=""/>
 
     <View
         android:layout_width="fill_parent"
