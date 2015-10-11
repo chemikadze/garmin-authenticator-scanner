@@ -138,7 +138,7 @@ public class ScanActivity extends ActionBarActivity implements AuthenticatorMana
         if (nameCandidates.length == 1) {
             name = uri.getPath();
         } else {
-            if (nameCandidates[0].equals("Google")) {
+            if (nameCandidates[0].equals("/Google")) {
                 name = nameCandidates[1];
             } else {
                 name = nameCandidates[0];
