@@ -1,17 +1,13 @@
 package com.github.chemikadze.garminauthscanner;
 
-import android.support.annotation.Nullable;
-
 public final class AuthAccount {
 
     private String name;
     private String code;
-    private String provider;
 
-    public AuthAccount(String name, String code, @Nullable String provider) {
+    public AuthAccount(String name, String code) {
         this.name = name;
         this.code = code;
-        this.provider = provider;
     }
 
     public String getName() {
@@ -20,11 +16,6 @@ public final class AuthAccount {
 
     public String getCode() {
         return code;
-    }
-
-    @Nullable
-    public String getProvider() {
-        return provider != null ? provider : "";
     }
 
     @Override

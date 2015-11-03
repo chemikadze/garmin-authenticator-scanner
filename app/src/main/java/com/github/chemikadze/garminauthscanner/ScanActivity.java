@@ -14,9 +14,6 @@ import com.garmin.android.connectiq.ConnectIQ;
 import com.garmin.android.connectiq.IQApp;
 import com.garmin.android.connectiq.IQDevice;
 import com.garmin.android.connectiq.exception.InvalidStateException;
-import com.google.android.gms.analytics.GoogleAnalytics;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -36,13 +33,9 @@ public class ScanActivity extends ActionBarActivity implements AuthenticatorMana
     private AuthAccount account;
     private boolean scanTriggered;
 
-    GoogleAnalytics analytics;
-    Tracker tracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        analytics = GoogleAnalytics.getInstance(getApplicationContext());
-        tracker = analytics.newTracker("UA-16692978-4");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
         if (savedInstanceState != null) {
@@ -54,7 +47,6 @@ public class ScanActivity extends ActionBarActivity implements AuthenticatorMana
             scanCode();
         }
         scanTriggered = !scanTriggered;
-        tracker.setScreenName("scan screen");
     }
 
     @Override
@@ -138,7 +130,6 @@ public class ScanActivity extends ActionBarActivity implements AuthenticatorMana
     private AuthAccount accountFromUrl(Uri uri) {
         String[] nameCandidates = uri.getPath().split(":", 2);
         String name;
-        String issuer = uri.getQueryParameter("issuer");
         if (nameCandidates.length == 1) {
             name = uri.getPath();
         } else {
@@ -154,15 +145,10 @@ public class ScanActivity extends ActionBarActivity implements AuthenticatorMana
 //        String b64code = uri.getQueryParameter("secret");
 //        String b32code = new Base32().encodeAsString(Base64.decode(b64code, Base64.DEFAULT));
         String b32code = uri.getQueryParameter("secret");
-        return new AuthAccount(name, b32code, issuer);
+        return new AuthAccount(name, b32code);
     }
 
     private void initiateSendProcess() {
-        tracker.send(new HitBuilders.EventBuilder()
-                .setCategory("UX")
-                .setAction("account send")
-                .setLabel(account.getProvider())
-                .build());
         sdk = ConnectIQ.getInstance(getApplicationContext(), ConnectIQ.IQConnectType.WIRELESS);
         manager = new AuthenticatorManagerImpl(getApplicationContext(), sdk, this);
         sdk.initialize(getApplicationContext(), true, manager);
